@@ -3,16 +3,13 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 # Copy only the necessary build files
-COPY build.gradle settings.gradle ./
-COPY gradlew gradlew.bat ./
-COPY gradle gradle/
-COPY src src/
+COPY . .
 
 # Grant permissions to gradlew
 RUN chmod +x ./gradlew
 
 # Build the application
-RUN ./gradlew build --no-daemon
+RUN ./gradlew clean build --no-daemon
 
 # Expose the port your app runs on
 EXPOSE 8080
