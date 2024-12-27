@@ -1,13 +1,13 @@
 # interview_backend
 This will be used for interview purpose only ..
 
-Problem Statement
-A Spring Boot application that manages products and categories using a PostgreSQL database. It has bugs and incomplete features. The candidate must:
+## Problem Statement
+This is a Spring Boot application that manages products and categories using a PostgreSQL database. It has bugs and incomplete features. The candidate must:
 1. Debug existing issues.
 2. Implement missing features.
 3. Optimize database queries.
 
-Expected API Behavior
+### Expected API Behavior
 1. Add Product (POST /products)
     * Input: { "name": "Tablet", "price": 299.99, "category": { "id": 1 } }
     * Output: 201 Created with the saved product.
@@ -22,14 +22,14 @@ Expected API Behavior
 4. Delete Product (DELETE /products/{id})
     * Input: DELETE /products/3
 
-Bug Fixes:
+### Bug Fixes:
 1. Add validation for Product in the addProduct endpoint:
     * Ensure name is not null or empty.
     * Ensure price is greater than 0.
     * Ensure categoryId exists in the database.
 2. Modify the /products/category/{categoryId} endpoint to return a 404 Not Found if the category does not exist.
 
-Enhancements:
+### Enhancements:
 1. Add a PUT /products/{id} endpoint to update a product's details (name, price, or category).
 2. Add a DELETE /products/{id} endpoint to delete a product by its ID.
 
