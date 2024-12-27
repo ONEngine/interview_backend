@@ -1,8 +1,13 @@
 # interview_backend
 This will be used for interview purpose only ..
 
+## Interviewee Instructions
+This programming test involves an API (see the Problem Statement below). Note that there are versions of the API for different languages. Choose the language you are most comfortable with and implement the items listed in the "Bug Fixes" and "Enhancements" sections below. There is a docker compose file in each language-specific directory.
+
+
+
 ## Problem Statement
-This is a Spring Boot application that manages products and categories using a PostgreSQL database. It has bugs and incomplete features. The candidate must:
+This is an API that manages products and categories using a PostgreSQL database. It has bugs and incomplete features. The candidate must:
 1. Debug existing issues.
 2. Implement missing features.
 3. Optimize database queries.
