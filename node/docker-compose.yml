@@ -1,0 +1,41 @@
+services:
+  app:
+    build:
+      context: .  
+      dockerfile: Dockerfile 
+    container_name: node-backend
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      DB_URL: postgres://postgres:Postgres@123@postgres:5432/interview
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+      - /app/node_modules 
+    networks:
+      - node-network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14-alpine
+    container_name: postgresdb
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Postgres@123
+      POSTGRES_DB: interview
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - node-network
+    restart: unless-stopped
+
+networks:
+  node-network:
+    driver: bridge
+
+volumes:
+  postgres_data:  

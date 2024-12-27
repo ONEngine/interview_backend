@@ -1,0 +1,37 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: java-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/interview_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=Postgres@123
+    networks:
+      - spring-postgres
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgresdb
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=interview_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Postgres@123
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - spring-postgres
+
+networks:
+  spring-postgres:
+    driver: bridge
+
+volumes:
+  postgres-data:
